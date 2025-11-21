@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xz - Code Creation Platform | Build the Web with Simple English</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="xz.app is a revolutionary code editor that turns everyday language into powerful, functional websites. Zero configuration, zero complexity. Launching January 1st, 2026.">
+    <meta name="keywords"
+        content="code editor, web development, simple english, no-code, low-code, website builder, xz app">
+    <meta name="author" content="xz Company">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xz.app/">
+    <meta property="og:title" content="xz - Code Creation Platform | Build the Web with Simple English">
+    <meta property="og:description"
+        content="Revolutionary code editor that turns everyday language into powerful, functional websites. Launching January 1st, 2026.">
+    <meta property="og:image" content="https://xz.app/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://xz.app/">
+    <meta property="twitter:title" content="xz - Code Creation Platform">
+    <meta property="twitter:description" content="Build the Web with Simple English. Launching January 1st, 2026.">
+    <meta property="twitter:image" content="https://xz.app/og-image.jpg">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://pagead2.googlesyndication.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com; frame-src 'self' https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-8360490533511823">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360490533511823"
+     crossorigin="anonymous"></script>
+
+    <!-- FAVICON LINK: Now references the circular favicon.svg -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- NEW: Load Tone.js for Web Audio synthesis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="hero-gradient no-select" oncontextmenu="return false;">
+    <!-- Container for the animated mouse trail dots -->
+    <div id="dot-container"></div>
+
+    <!-- Skip to Content Link (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Company Name -->
+            <a href="#" class="text-3xl font-extrabold text-white tracking-tighter" aria-label="xz.app Home">
+                xz<span class="text-sky-400">.app</span>
+            </a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold" aria-label="Main navigation">
+                <a href="#features" class="text-gray-400 hover:text-sky-400 transition duration-300"
+                    aria-label="View Features">Features</a>
+                <a href="#team" class="text-gray-400 hover:text-sky-400 transition duration-300"
+                    aria-label="View Team">Team</a>
+                <a href="#feedback" class="text-gray-400 hover:text-sky-400 transition duration-300"
+                    aria-label="Share Feedback">Feedback</a>
+                <a href="#download" class="text-gray-400 hover:text-sky-400 transition duration-300"
+                    aria-label="Download App">Download</a>
+                <button id="open-game-btn-header"
+                    class="bg-gradient-to-r from-sky-600 to-purple-600 hover:from-sky-500 hover:to-purple-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm">
+                    🎮 Game
+                </button>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-400 hover:text-sky-400 transition duration-300"
+                aria-label="Toggle mobile menu" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav id="mobile-menu" aria-label="Mobile navigation">
+        <div class="flex justify-between items-center mb-8">
+            <span class="text-2xl font-extrabold text-white">xz<span class="text-sky-400">.app</span></span>
+            <button id="mobile-menu-close" class="text-gray-400 hover:text-white" aria-label="Close menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <a href="#features" class="text-gray-300 hover:text-sky-400 transition duration-300"
+            onclick="closeMobileMenu()">Features</a>
+        <a href="#team" class="text-gray-300 hover:text-sky-400 transition duration-300"
+            onclick="closeMobileMenu()">Team</a>
+        <a href="#feedback" class="text-gray-300 hover:text-sky-400 transition duration-300"
+            onclick="closeMobileMenu()">Feedback</a>
+        <a href="#download" class="text-gray-300 hover:text-sky-400 transition duration-300"
+            onclick="closeMobileMenu()">Download</a>
+        <button id="open-game-btn-mobile"
+            class="w-full mt-4 bg-gradient-to-r from-sky-600 to-purple-600 hover:from-sky-500 hover:to-purple-500 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 shadow-lg"
+            onclick="closeMobileMenu()">
+            🎮 Play Code Challenge
+        </button>
+    </nav>
+
+    <main id="main-content">
+        <!-- 1. Hero Section: Core Value Proposition -->
+        <section class="py-24 sm:py-40 text-center max-w-7xl mx-auto px-4 fade-in" id="home">
+            <h1 id="download"
+                class="text-6xl sm:text-8xl font-extrabold tracking-tighter mb-6 text-white drop-shadow-xl">
+                Build the Web.
+                <span class="block lg:inline text-sky-400">Write Simple English.</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-400 max-w-4xl mx-auto mb-8 font-light">
+                The xz app is more than a browser—it's a revolutionary code editor that turns everyday language into
+                powerful, functional websites. Zero configuration, zero complexity.
+            </p>
+
+            <!-- Mock Code Visualization: Shows the core concept immediately -->
+            <div
+                class="max-w-xl mx-auto mb-16 p-6 sm:p-8 rounded-2xl bg-gray-900/50 border border-sky-400/30 backdrop-blur-sm shadow-2xl shadow-sky-500/10 transition duration-500 hover:shadow-sky-500/20">
+                <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
+                    <span class="text-sm font-medium text-sky-400">Editor Window - Command Line</span>
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                </div>
+                <p class="font-mono text-left text-lg text-white">
+                    <span class="text-gray-500 mr-2">></span> <span class="text-green-300">create</span> hero section
+                    with title "Future Now" and a blue button
+                </p>
+                <div class="mt-4 pt-4 border-t border-gray-700">
+                    <p class="font-mono text-left text-sm text-gray-400">
+                        <span class="text-sky-400"># Output:</span> HTML, CSS, and JS generated...
+                    </p>
+                </div>
+            </div>
+
+            <!-- Main CTA: Download Buttons (UPDATED FOR PROFESSIONALISM) -->
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+                <!-- Windows Button (Primary CTA - Dark and Highlighted) -->
+                <a href="#" id="download-windows"
+                    class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg shadow-sky-500/20 transition transform hover:scale-105 duration-300 ring-2 ring-sky-500 flex items-center justify-center group">
+                    <svg class="w-5 h-5 mr-3 text-sky-400 group-hover:text-sky-300 transition duration-300"
+                        fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M11 2.001H1.08v8.904h9.914V2.001zm0 19.998H1.08v-8.905h9.914v8.905zM22.92 2.001h-9.915v8.904h9.915V2.001zm0 19.998h-9.915v-8.905h9.915v8.905z" />
+                    </svg>
+                    Download for Windows
+                </a>
+                <!-- macOS Button (Secondary CTA - Sleek Dark) -->
+                <a href="#" id="download-macos"
+                    class="bg-gray-900 hover:bg-gray-800 text-white font-bold py-4 px-10 rounded-xl shadow-lg shadow-gray-700/20 transition transform hover:scale-105 duration-300 ring-2 ring-gray-600 flex items-center justify-center group">
+                    <svg class="w-5 h-5 mr-3 text-gray-300 group-hover:text-white transition duration-300"
+                        fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12.96 1.054c.732 0 1.942.502 3.193 1.258.98.59 1.764 1.18 2.296 1.579a4.2 4.2 0 0 1 .478.432c.31.29.56.55.75.75.18.177.34.33.48.473a2.95 2.95 0 0 1 .485.67c.183.35.33.724.442 1.14.075.25.12.51.137.766.017.25.016.51.016.766v4.757c0 .17-.008.34-.025.508-.016.17-.043.33-.075.49-.03.16-.07.31-.137.456-.06.14-.13.28-.22.408-.09.125-.2.24-.315.344-.114.1-.23.19-.36.27-.13.08-.27.14-.42.19-.15.05-.3.08-.47.11-.17.02-.34.03-.51.03h-2.19v-2.09c0-1.88-1.5-3.39-3.39-3.39h-.03c-1.87 0-3.38 1.5-3.38 3.39v2.09H5.06c-.17 0-.34-.01-.51-.03-.17-.02-.32-.05-.48-.1-.16-.05-.31-.12-.44-.2-.13-.08-.25-.17-.35-.28-.1-.11-.18-.23-.26-.36-.08-.13-.14-.26-.19-.41-.05-.15-.08-.3-.1-.47-.02-.17-.03-.34-.03-.51V7.79c0-.25.01-.5.03-.75.04-.98.2-1.63.44-2.19.21-.5.47-.88.84-1.24.36-.36.74-.63 1.24-.84.56-.24 1.21-.4 2.19-.44.87-.04 1.17-.05 3.48-.05h.01zm.009 2.47a5.53 5.53 0 1 0 0 11.06 5.53 5.53 0 0 0 0-11.06zM12.315 15a2.49 2.49 0 1 1 0-4.98 2.49 2.49 0 0 1 0 4.98zm4.49-5.46a.82.82 0 1 1-1.63 0 .82.82 0 0 1 1.63 0z" />
+                    </svg>
+                    Download for macOS
+                </a>
+            </div>
+            <p class="mt-6 text-sm text-gray-500 font-medium">
+                Current Version: 0.9 Beta. Requires Windows 10+ or macOS Ventura+.
+            </p>
+        </section>
+
+        <!-- Ad Banner 1: After Hero Section -->
+        <div class="max-w-7xl mx-auto px-4 py-8 flex justify-center">
+            <div class="ad-container ad-banner">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-fb+5y+3y-dx+b1"
+                    data-ad-client="ca-pub-8360490533511823"
+                    data-ad-slot="1113058696"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Countdown Timer Section -->
+        <section id="countdown-section" class="py-16 max-w-5xl mx-auto px-4 fade-in">
+            <div
+                class="bg-gradient-to-br from-sky-900/50 to-purple-900/50 p-10 sm:p-12 rounded-2xl shadow-2xl border border-sky-400/30 backdrop-blur-sm">
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8 text-white">
+                    <span class="text-sky-400">🎉</span> Countdown to Launch <span class="text-sky-400">🎉</span>
+                </h2>
+                <p class="text-center text-gray-300 mb-10 text-xl sm:text-2xl">January 1st, 2026</p>
+                <div id="countdown" class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
+                    <div
+                        class="countdown-item bg-gray-900/70 p-8 sm:p-10 rounded-xl border border-sky-500/30 text-center">
+                        <div id="days" class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-sky-400 mb-3">0</div>
+                        <div class="text-base sm:text-lg text-gray-400 uppercase tracking-wide font-semibold">Days</div>
+                    </div>
+                    <div
+                        class="countdown-item bg-gray-900/70 p-8 sm:p-10 rounded-xl border border-sky-500/30 text-center">
+                        <div id="hours" class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-sky-400 mb-3">0
+                        </div>
+                        <div class="text-base sm:text-lg text-gray-400 uppercase tracking-wide font-semibold">Hours
+                        </div>
+                    </div>
+                    <div
+                        class="countdown-item bg-gray-900/70 p-8 sm:p-10 rounded-xl border border-sky-500/30 text-center">
+                        <div id="minutes" class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-sky-400 mb-3">0
+                        </div>
+                        <div class="text-base sm:text-lg text-gray-400 uppercase tracking-wide font-semibold">Minutes
+                        </div>
+                    </div>
+                    <div
+                        class="countdown-item bg-gray-900/70 p-8 sm:p-10 rounded-xl border border-sky-500/30 text-center">
+                        <div id="seconds" class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-sky-400 mb-3">0
+                        </div>
+                        <div class="text-base sm:text-lg text-gray-400 uppercase tracking-wide font-semibold">Seconds
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-gray-400 text-base sm:text-lg">The future of web creation is coming soon!</p>
+            </div>
+        </section>
+
+        <!-- Gamification Panel (Tab Design) -->
+        <div id="gamification-panel"
+            class="fixed top-24 right-0 z-40 bg-gray-900/95 backdrop-blur-md shadow-2xl border-l border-t border-b border-sky-400/30 transition-all duration-300 ease-in-out">
+            <!-- Collapsed Tab (Always Visible) -->
+            <div id="collapsed-tab"
+                class="flex flex-col items-center justify-center py-6 px-3 cursor-pointer hover:bg-gray-800/50 transition-colors">
+                <div class="text-3xl mb-2">🎮</div>
+                <div class="text-xl font-extrabold text-sky-400 mb-1 writing-vertical" id="collapsed-points">0</div>
+                <div class="text-xs text-gray-400 mb-2">L<span id="collapsed-level">1</span></div>
+                <div class="w-12 h-1 bg-gray-800 rounded-full mb-2">
+                    <div id="collapsed-progress"
+                        class="bg-gradient-to-r from-sky-500 to-purple-500 h-1 rounded-full transition-all duration-500"
+                        style="width: 0%"></div>
+                </div>
+                <button id="toggle-gamification"
+                    class="text-gray-400 hover:text-sky-400 transition-all duration-300 text-lg mt-2">◀</button>
+            </div>
+
+            <!-- Expanded Panel Content -->
+            <div id="expanded-panel"
+                class="hidden w-72 p-4 max-h-[80vh] overflow-y-auto border-t border-sky-400/30 flex flex-col">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-4 flex-shrink-0">
+                    <h3 class="text-xl font-bold text-sky-400">🎮 Your Progress</h3>
+                    <button id="toggle-gamification-close"
+                        class="text-gray-400 hover:text-white transition-all duration-300 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-800">×</button>
+                </div>
+
+                <!-- Scrollable Content -->
+                <div class="flex-1 overflow-y-auto">
+                    <!-- Points Display -->
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-gray-300 font-semibold">XP Points</span>
+                            <span id="total-points" class="text-2xl font-extrabold text-sky-400">0</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-3 mb-2">
+                            <div id="xp-progress"
+                                class="bg-gradient-to-r from-sky-500 to-purple-500 h-3 rounded-full transition-all duration-500"
+                                style="width: 0%"></div>
+                        </div>
+                        <p class="text-xs text-gray-500">Level <span id="user-level">1</span> • <span
+                                id="xp-to-next">100</span> XP to next level</p>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3">🏆 Achievements</h4>
+                        <div id="achievements-list" class="space-y-2">
+                            <!-- Achievements will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="border-t border-gray-700 pt-4 mb-4">
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3">📊 Stats</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Clicks</span>
+                                <span id="stat-clicks" class="text-sky-400 font-semibold">0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Time on Site</span>
+                                <span id="stat-time" class="text-sky-400 font-semibold">0s</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Sections Visited</span>
+                                <span id="stat-sections" class="text-sky-400 font-semibold">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Game Button - Fixed at Bottom -->
+                <div class="flex-shrink-0 pt-4 border-t border-gray-700 mt-4">
+                    <button id="open-game-btn"
+                        class="w-full bg-gradient-to-r from-sky-600 to-purple-600 hover:from-sky-500 hover:to-purple-500 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        🎮 Play Code Challenge
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini Game Modal -->
+        <div id="game-modal"
+            class="fixed inset-0 bg-gray-900/95 backdrop-blur-md z-[10002] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+            <div class="bg-gray-800 rounded-2xl shadow-2xl border border-sky-500/50 max-w-2xl w-full mx-4 transform scale-90 opacity-0 transition-all duration-300"
+                id="game-modal-content">
+                <div class="p-6">
+                    <!-- Game Header -->
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-sky-400">🎮 Code Typing Challenge</h2>
+                        <button id="close-game-btn"
+                            class="text-gray-400 hover:text-white text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-700">×</button>
+                    </div>
+
+                    <!-- Game Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-900/50 p-4 rounded-lg text-center border border-sky-500/20">
+                            <div class="text-xs text-gray-400 mb-1">Score</div>
+                            <div id="game-score" class="text-2xl font-bold text-sky-400">0</div>
+                        </div>
+                        <div class="bg-gray-900/50 p-4 rounded-lg text-center border border-sky-500/20">
+                            <div class="text-xs text-gray-400 mb-1">Time</div>
+                            <div id="game-timer" class="text-2xl font-bold text-purple-400">60</div>
+                        </div>
+                        <div class="bg-gray-900/50 p-4 rounded-lg text-center border border-sky-500/20">
+                            <div class="text-xs text-gray-400 mb-1">Level</div>
+                            <div id="game-level" class="text-2xl font-bold text-green-400">1</div>
+                        </div>
+                    </div>
+
+                    <!-- Game Area -->
+                    <div id="game-start-screen" class="text-center py-8">
+                        <div class="text-6xl mb-4">⌨️</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Type the code snippets correctly!</h3>
+                        <p class="text-gray-400 mb-6">Earn points for speed and accuracy. Each correct answer gives you
+                            XP!</p>
+                        <button id="start-game-btn"
+                            class="bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-8 rounded-lg transition duration-200 shadow-lg">
+                            Start Game
+                        </button>
+                    </div>
+
+                    <div id="game-play-area" class="hidden">
+                        <!-- Code to Type -->
+                        <div class="bg-gray-900 p-6 rounded-lg border border-sky-500/30 mb-4">
+                            <div class="text-sm text-gray-500 mb-2">Type this code:</div>
+                            <div id="code-to-type"
+                                class="font-mono text-lg text-green-300 mb-4 whitespace-pre-wrap break-words"></div>
+                            <div class="text-sm text-gray-500 mb-2">Your input:</div>
+                            <textarea id="code-input"
+                                class="w-full bg-gray-950 border border-gray-700 rounded-lg p-4 font-mono text-sm text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 resize-none"
+                                rows="4" placeholder="Start typing..." autocomplete="off" autocorrect="off"
+                                autocapitalize="off" spellcheck="false"></textarea>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-gray-800 rounded-full h-2 mb-4">
+                            <div id="game-progress"
+                                class="bg-gradient-to-r from-sky-500 to-purple-500 h-2 rounded-full transition-all duration-300"
+                                style="width: 0%"></div>
+                        </div>
+
+                        <!-- Game Controls -->
+                        <div class="flex justify-between items-center">
+                            <button id="skip-code-btn" class="text-gray-400 hover:text-sky-400 text-sm transition">Skip
+                                →</button>
+                            <div id="game-feedback" class="text-sm font-semibold"></div>
+                            <button id="pause-game-btn" class="text-gray-400 hover:text-white text-sm transition">⏸
+                                Pause</button>
+                        </div>
+                    </div>
+
+                    <div id="game-end-screen" class="hidden text-center py-8">
+                        <div class="text-6xl mb-4">🎉</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Game Over!</h3>
+                        <div class="text-4xl font-bold text-sky-400 mb-4" id="final-score">0</div>
+                        <p class="text-gray-400 mb-2">You earned <span id="earned-xp"
+                                class="text-sky-400 font-bold">0</span> XP!</p>
+                        <div class="flex gap-3 justify-center mt-6">
+                            <button id="play-again-btn"
+                                class="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-6 rounded-lg transition duration-200">
+                                Play Again
+                            </button>
+                            <button id="close-game-end-btn"
+                                class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition duration-200">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Point Notification (Floating) -->
+        <div id="point-notification"
+            class="fixed top-24 right-0 z-50 bg-sky-600 text-white px-6 py-3 shadow-xl transform translate-x-full transition-transform duration-300">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl">✨</span>
+                <div>
+                    <div class="font-bold">+<span id="point-amount">0</span> XP</div>
+                    <div class="text-xs opacity-90" id="point-reason">Achievement unlocked!</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="features" class="border-t border-gray-800 my-16 max-w-7xl mx-auto"></div>
+
+        <!-- 2. Feature Section: How It Works (Area shown in screenshot is now non-selectable) -->
+        <section class="py-16 max-w-7xl mx-auto px-4 fade-in" id="features">
+            <h2 class="text-4xl font-bold text-center mb-16 text-sky-400">The Future of Web Creation is Simple</h2>
+
+            <div class="grid md:grid-cols-3 gap-10">
+
+                <!-- Feature 1: Simple English -->
+                <div
+                    class="bg-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 transition transform hover:border-sky-500 card-glow duration-300">
+                    <div class="text-4xl text-sky-400 mb-4">✍️</div>
+                    <h3 class="text-2xl font-semibold mb-3">Simple English Syntax</h3>
+                    <p class="text-gray-400">
+                        Stop struggling with semicolons and brackets. Simply describe the element you want, and the
+                        <b>xz editor</b> instantly generates the compliant code.
+                    </p>
+                    <div
+                        class="mt-4 p-4 rounded-lg bg-gray-800 font-mono text-sm text-green-300 border border-green-300/20">
+                        > create button labeled "Join Now" in blue
+                    </div>
+                </div>
+
+                <!-- Feature 2: Real-time Browser -->
+                <div
+                    class="bg-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 transition transform hover:border-sky-500 card-glow duration-300">
+                    <div class="text-4xl text-sky-400 mb-4">🚀</div>
+                    <h3 class="text-2xl font-semibold mb-3">Instant Preview Environment</h3>
+                    <p class="text-gray-400">
+                        The app is built into a <b>Chrome-like browser</b> environment. As you type your simple command,
+                        the live website rendering updates in milliseconds—no manual compiling or refreshing needed.
+                    </p>
+                    <div
+                        class="mt-4 p-4 rounded-lg bg-gray-800 font-mono text-sm text-yellow-300 border border-yellow-300/20">
+                        Live visual feedback on every command.
+                    </div>
+                </div>
+
+                <!-- Feature 3: Focused Learning -->
+                <div
+                    class="bg-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 transition transform hover:border-sky-500 card-glow duration-300">
+                    <div class="text-4xl text-sky-400 mb-4">🧠</div>
+                    <h3 class="text-2xl font-semibold mb-3">Code Education Layer</h3>
+                    <p class="text-gray-400">
+                        The platform doesn't hide the code; it translates it. See the actual HTML, CSS, and JavaScript
+                        generated from your English commands, helping you learn coding fundamentals by observation.
+                    </p>
+                    <div
+                        class="mt-4 p-4 rounded-lg bg-gray-800 font-mono text-sm text-purple-300 border border-purple-300/20">
+                        HTML generated: &lt;button class="btn-blue"&gt;...
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ad Banner 2: Between Features and Team -->
+        <div class="max-w-7xl mx-auto px-4 py-8 flex justify-center">
+            <div class="ad-container ad-responsive">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-fb+62+3f-do+by"
+                    data-ad-client="ca-pub-8360490533511823"
+                    data-ad-slot="7348677447"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <div id="team" class="border-t border-gray-800 my-16 max-w-7xl mx-auto"></div>
+
+        <!-- 3. Our Leadership & Mission Section -->
+        <section class="py-16 max-w-5xl mx-auto px-4 fade-in" id="team">
+            <h2 class="text-4xl font-bold text-center mb-10 text-sky-400">Our Leadership & Mission</h2>
+
+            <p class="text-xl text-gray-400 mb-12 text-center font-light">
+                Our team of 10 is committed to <b>breaking down the barrier of entry into the digital world</b>. The
+                <b>xz app</b> is our tool to empower the next generation of creators.
+            </p>
+
+            <div class="overflow-x-auto bg-gray-900 rounded-xl shadow-2xl border border-gray-700">
+                <table class="min-w-full text-left text-base text-gray-300">
+                    <thead class="text-sm uppercase bg-gray-800/50 border-b border-sky-400/50">
+                        <tr>
+                            <th scope="col" class="py-4 px-6">Role</th>
+                            <th scope="col" class="py-4 px-6">Name</th>
+                            <th scope="col" class="py-4 px-6">Category / Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- President -->
+                        <tr class="border-b border-gray-800 transition duration-150 team-row-hover">
+                            <td class="py-4 px-6 font-semibold text-white">President (xz)</td>
+                            <td class="py-4 px-6 text-sky-400 font-medium">Abraham Ting</td>
+                            <td class="py-4 px-6">Strategic Vision & Leadership</td>
+                        </tr>
+                        <!-- Heads of Category -->
+                        <tr class="border-b border-gray-800 transition duration-150 team-row-hover">
+                            <td class="py-4 px-6 font-medium">Head of Category</td>
+                            <td class="py-4 px-6">Kelvin Ling</td>
+                            <td class="py-4 px-6">Function (Technical Development)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 transition duration-150 team-row-hover">
+                            <td class="py-4 px-6 font-medium">Head of Category</td>
+                            <td class="py-4 px-6">Samuel Kong</td>
+                            <td class="py-4 px-6">Planning Department (Decide How the App Function)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 transition duration-150 team-row-hover">
+                            <td class="py-4 px-6 font-medium">Head of Category</td>
+                            <td class="py-4 px-6">Jeriel Ling</td>
+                            <td class="py-4 px-6">Design & Art (User Experience & Visuals)</td>
+                        </tr>
+                        <tr class="transition duration-150 team-row-hover">
+                            <td class="py-4 px-6 font-medium">Head of Category</td>
+                            <td class="py-4 px-6">Clarence Lee</td>
+                            <td class="py-4 px-6">Marketing (Mission Outreach & Growth)</td>
+                        </tr>
+                        <!-- Total Team Size -->
+                        <tr class="bg-gray-950 text-white font-bold">
+                            <td class="py-4 px-6">Total Team Size</td>
+                            <td class="py-4 px-6">14 People</td>
+                            <td class="py-4 px-6">Including President</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="border-t border-gray-800 my-16 max-w-7xl mx-auto"></div>
+
+        <!-- 4. Feedback / Contact Section (UPDATED: Added mailto action and clarification) -->
+        <section id="feedback" class="py-16 max-w-5xl mx-auto px-4 fade-in">
+            <h2 class="text-4xl font-bold text-center mb-10 text-sky-400">Share Your Feedback</h2>
+
+            <p class="text-xl text-gray-400 mb-8 text-center font-light">
+                Help us refine the <b>xz app</b>. Your suggestions on features, design, and overall experience are
+                invaluable.
+            </p>
+
+            <div class="bg-gray-900 p-8 rounded-2xl shadow-xl border border-sky-400/30">
+                <!-- Form action remains a mailto link -->
+                <form action="mailto:xz010125@gmail.com?subject=Feedback%20for%20xz.app%20(General)" method="POST"
+                    enctype="text/plain" class="space-y-6" id="feedback-form">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name (Optional)</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition duration-200"
+                            placeholder="Enter your name" maxlength="100" pattern="[A-Za-z0-9\s\-_\.]{0,100}"
+                            title="Only letters, numbers, spaces, hyphens, underscores, and periods allowed">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition duration-200"
+                            placeholder="your.email@example.com" maxlength="254"
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                            title="Please enter a valid email address">
+                    </div>
+
+                    <!-- CATEGORY DROPDOWN -->
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-gray-300 mb-2">Category</label>
+                        <select id="category" name="category" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition duration-200 feedback-select">
+                            <option value="general">General Inquiry</option>
+                            <option value="functionality">Functionality / Bugs</option>
+                            <option value="design">Design / User Experience (UX)</option>
+                            <option value="feature">New Feature Suggestion</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Your Feedback /
+                            Suggestion</label>
+                        <textarea id="message" name="message" rows="6" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition duration-200"
+                            placeholder="Tell us what you love or how we can improve."></textarea>
+                    </div>
+
+                    <!-- NEW BUTTON AND INSTRUCTION TEXT -->
+                    <div class="flex flex-col items-center pt-4">
+                        <button type="submit"
+                            class="bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-10 rounded-xl transition duration-300 shadow-lg shadow-sky-500/20">
+                            Open Email to Send Feedback
+                        </button>
+                        <p class="mt-4 text-sm text-gray-400 max-w-xs text-center">
+                            (This button will open your email app. **You must press 'Send'** in your email app to
+                            finalize the message.)
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Ad Banner 3: After Feedback Section -->
+        <div class="max-w-7xl mx-auto px-4 py-8 flex justify-center">
+            <div class="ad-container ad-banner">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-fb+62+3f-do+by"
+                    data-ad-client="ca-pub-8360490533511823"
+                    data-ad-slot="3409432432"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 my-16 max-w-7xl mx-auto"></div>
+
+    </main>
+
+    <!-- Footer: Contact & Copyright -->
+    <footer class="bg-gray-950 border-t border-gray-800 mt-12">
+        <div
+            class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
+
+            <!-- 1. Company Info -->
+            <div class="text-center md:text-left">
+                <h3 class="text-2xl font-extrabold text-white mb-3">xz<span class="text-sky-400">.app</span></h3>
+                <p class="text-gray-500 text-sm max-w-xs font-light">
+                    Building the web with simple English. Empowering the next generation of creators.
+                </p>
+                <p class="text-gray-600 text-xs mt-6">
+                    &copy; 2025 xz Company. All rights reserved.
+                </p>
+            </div>
+
+            <!-- 2. Social Media / Contact -->
+            <div class="text-center md:text-right">
+                <h3 class="text-xl font-bold text-white mb-5">Connect With Us</h3>
+
+                <!-- Social Icons -->
+                <div class="flex items-center justify-center md:justify-end space-x-6">
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/xz010126" target="_blank"
+                        class="text-gray-400 hover:text-sky-400 transition transform hover:scale-110 duration-300"
+                        aria-label="Instagram">
+                        <!-- Instagram SVG Icon -->
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.76.01 3.70.05 1.05.04 1.76.22 2.45.51.64.28 1.17.65 1.71 1.19.54.54.91 1.07 1.19 1.71.29.69.47 1.4.51 2.45.04.94.05 1.27.05 3.7v.01c0 2.43-.01 2.76-.05 3.7-.04 1.05-.22 1.76-.51 2.45-.28.64-.65 1.17-1.19 1.71-.54.54-1.07.91-1.19 1.71-.29.69-.47 1.4-.51 2.45-.04.94-.05 1.27-.05 3.7h-.01c-2.43 0-2.76-.01-3.7-.05-1.05-.04-1.76-.22-2.45-.51-.64-.28-1.17-.65-1.71-1.19-.54-.54-1.07-.91-1.19-1.71-.29-.69-.47-1.4-.51-2.45-.04.94-.05 1.27-.05 3.7v-.01c0-2.43.01-2.76.05-3.7.04-1.05.22-1.76.51-2.45.28-.64.65-1.17 1.19-1.71.54-.54 1.07-.91 1.71-1.19.69-.29 1.4-.47 2.45-.51.94-.04 1.27-.05 3.7-.05h.01zm.009 2.47a5.53 5.53 0 1 0 0 11.06 5.53 5.53 0 0 0 0-11.06zM12.315 15a2.49 2.49 0 1 1 0-4.98 2.49 2.49 0 0 1 0 4.98zm4.49-5.46a.82.82 0 1 1-1.63 0 .82.82 0 0 1 1.63 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span class="sr-only">Instagram</span>
+                    </a>
+
+                    <!-- Facebook (using the provided email as the primary contact) -->
+                    <a href="https://www.facebook.com/profile.php?id=61582728969768" target="_blank"
+                        class="text-gray-400 hover:text-sky-400 transition transform hover:scale-110 duration-300"
+                        aria-label="Facebook">
+                        <!-- Facebook SVG Icon -->
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.05 13.92v-4.14h-1.37v-1.92l1.37-.01V8.52c0-1.18.73-1.83 2.15-1.83.69 0 1.28.05 1.45.07v1.59h-.93c-.56 0-.67.26-.67.65v.85h1.58l-.26 1.93h-1.32v4.14h-1.92z" />
+                        </svg>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                </div>
+
+                <!-- Usernames/Emails -->
+                <p class="text-gray-500 text-sm mt-5">
+                    Instagram: <span class="text-gray-300 font-semibold">xz010126</span>
+                </p>
+                <p class="text-gray-500 text-sm">
+                    Email: <span class="text-gray-300 font-semibold">xz010125@gmail.com</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" aria-label="Scroll to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- Easter Egg Modal HTML -->
+    <div id="easter-egg-modal"
+        class="fixed inset-0 bg-gray-900/80 z-[10001] flex items-center justify-center opacity-0 invisible transition-all duration-300"
+        onclick="closeEasterEggModal(event)">
+
+        <div class="bg-gray-800 p-8 sm:p-10 rounded-xl shadow-2xl border border-sky-500/50 max-w-sm w-full text-center 
+                    transform transition-all duration-500 scale-90 opacity-0" id="modal-content"
+            onclick="event.stopPropagation()"> <!-- Prevent closing when clicking inside the modal content -->
+
+            <div class="text-5xl mb-4 text-sky-400">✨🥚</div>
+            <h3 class="text-2xl font-extrabold text-white mb-2">Cǎidàn Found! (彩蛋发现)</h3>
+            <p class="text-gray-300 mb-6">
+                You drew a perfect circle! Creativity is not restricted to code.
+                <span class="block mt-2 font-medium text-sm text-gray-400">The xz app makes any creative idea
+                    executable.</span>
+            </p>
+            <button onclick="closeEasterEggModal()"
+                class="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-6 rounded-lg transition duration-200 shadow-md">
+                Awesome!
+            </button>
+        </div>
+    </div>
+
+    <!-- Download Wait Modal -->
+    <div id="download-wait-modal"
+        class="fixed inset-0 bg-gray-900/80 z-[10001] flex items-center justify-center opacity-0 invisible transition-all duration-300"
+        onclick="closeDownloadWaitModal(event)">
+
+        <div class="bg-gray-800 p-8 sm:p-10 rounded-xl shadow-2xl border border-sky-500/50 max-w-md w-full text-center 
+                    transform transition-all duration-500 scale-90 opacity-0" id="download-modal-content"
+            onclick="event.stopPropagation()">
+
+            <div class="text-5xl mb-4 text-sky-400">⏳</div>
+            <h3 class="text-2xl font-extrabold text-white mb-3">Coming Soon!</h3>
+            <p class="text-gray-300 mb-4">
+                The xz app will be available for download on
+                <span class="block mt-2 font-bold text-sky-400 text-xl">January 1st, 2026</span>
+            </p>
+            <p class="text-gray-400 text-sm mb-6">
+                Check the countdown timer above to see how long until launch! We're working hard to bring you the best
+                code creation platform.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <button onclick="closeDownloadWaitModal()"
+                    class="bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-8 rounded-lg transition duration-200 shadow-md">
+                    Got it!
+                </button>
+                <a href="#countdown-section" onclick="closeDownloadWaitModal()"
+                    class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition duration-200 shadow-md">
+                    View Countdown
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Security Deterrence: Disable Common Developer Shortcuts ---
+        document.addEventListener('keydown', function (e) {
+            // F12 key check (Key Code 123)
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+                return;
+            }
+
+            // Checks for Ctrl/Cmd (metaKey) + Shift + I (Developer Tools)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
+                e.preventDefault();
+                return;
+            }
+
+            // Checks for Ctrl/Cmd (metaKey) + U (View Page Source)
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
+                e.preventDefault();
+                return;
+            }
+        });
+
+        // --- NEW AUDIO LOGIC FOR SOFT POP ON ANY CLICK ---
+        let popSynth = null;
+        let isAudioReady = false;
+
+        /**
+         * Initializes the Tone.js audio engine (must be triggered by a user gesture).
+         * Creates and configures a PluckSynth for a soft "pop" sound.
+         */
+        async function initializeAudio() {
+            if (isAudioReady) return;
+
+            try {
+                await Tone.start();
+                console.log("AudioContext started.");
+
+                // PluckSynth is ideal for soft, non-tonal percussive sounds
+                popSynth = new Tone.PluckSynth({
+                    attackNoise: 0.8, // More noise for a percussive attack
+                    dampening: 2000,
+                    resonance: 0.9
+                }).toDestination();
+
+                isAudioReady = true;
+            } catch (error) {
+                console.error("Failed to start AudioContext:", error);
+            }
+        }
+
+        /**
+         * Plays the soft pop sound effect.
+         */
+        function playPopSound() {
+            if (isAudioReady && popSynth) {
+                // Using a note (C5) and a short duration (16n) ensures Tone.js gets all needed scheduling arguments.
+                popSynth.triggerAttackRelease("C5", "16n");
+            }
+        }
+
+        // --- Easter Egg Logic: Circle Gesture Detection (彩蛋) ---
+        let isDrawing = false;
+        let gesturePoints = [];
+        const MIN_PATH_LENGTH = 300;
+        const MIN_RADIUS = 50;
+        const MAX_LOOP_CLOSURE = 30;
+
+        /**
+         * Calculates the Euclidean distance between two points.
+         */
+        function distance(p1, p2) {
+            return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+        }
+
+        /**
+         * Checks if the collected points form a rough circle gesture.
+         */
+        function detectCircleGesture() {
+            if (gesturePoints.length < 5) return false;
+
+            const start = gesturePoints[0];
+            const end = gesturePoints[gesturePoints.length - 1];
+
+            // 1. Check for loop closure (start point is close to end point)
+            if (distance(start, end) > MAX_LOOP_CLOSURE) {
+                return false;
+            }
+
+            // 2. Check path length (ensure it wasn't just a quick click)
+            let pathLength = 0;
+            let maxX = start.x, minX = start.x, maxY = start.y, minY = start.y;
+            for (let i = 1; i < gesturePoints.length; i++) {
+                pathLength += distance(gesturePoints[i - 1], gesturePoints[i]);
+                maxX = Math.max(maxX, gesturePoints[i].x);
+                minX = Math.min(minX, gesturePoints[i].x);
+                maxY = Math.max(maxY, gesturePoints[i].y);
+                minY = Math.min(minY, gesturePoints[i].y);
+            }
+
+            if (pathLength < MIN_PATH_LENGTH) {
+                return false;
+            }
+
+            // 3. Check for minimum drawing size (approximate radius)
+            const width = maxX - minX;
+            const height = maxY - minY;
+            if (width < MIN_RADIUS * 2 || height < MIN_RADIUS * 2) {
+                return false;
+            }
+
+            // 4. Basic "circularity" check: Path length should be roughly pi * diameter (or circumference)
+            const diameter = (width + height) / 2;
+            const theoreticalCircumference = Math.PI * diameter;
+
+            // Check if the actual path length is within a reasonable range of the circumference
+            if (pathLength > theoreticalCircumference * 1.5 || pathLength < theoreticalCircumference * 0.7) {
+                return false;
+            }
+
+            // If all checks pass, it's a circle!
+            return true;
+        }
+
+        function showEasterEggModal() {
+            const modal = document.getElementById('easter-egg-modal');
+            const content = document.getElementById('modal-content');
+
+            modal.classList.add('modal-show');
+            // Remove scale-90 and opacity-0 from content via class list to trigger transition
+            content.classList.remove('scale-90', 'opacity-0');
+        }
+
+        function closeEasterEggModal(event) {
+            const modal = document.getElementById('easter-egg-modal');
+            const content = document.getElementById('modal-content');
+
+            // Check if event is passed and if the click was directly on the backdrop
+            if (event && event.target !== modal) {
+                // If the target is not the modal itself (i.e., it's the content inside), do nothing.
+                return;
+            }
+
+            modal.classList.remove('modal-show');
+            // Re-apply initial transition states for next show
+            content.classList.add('scale-90', 'opacity-0');
+        }
+
+        // Expose function globally so it can be called from the button
+        window.closeEasterEggModal = closeEasterEggModal;
+
+        // ============================================
+        // DOWNLOAD WAIT MODAL FUNCTIONS
+        // ============================================
+        function showDownloadWaitModal() {
+            const modal = document.getElementById('download-wait-modal');
+            const content = document.getElementById('download-modal-content');
+
+            modal.classList.add('modal-show');
+            // Remove scale-90 and opacity-0 from content via class list to trigger transition
+            content.classList.remove('scale-90', 'opacity-0');
+        }
+
+        function closeDownloadWaitModal(event) {
+            const modal = document.getElementById('download-wait-modal');
+            const content = document.getElementById('download-modal-content');
+
+            // Check if event is passed and if the click was directly on the backdrop
+            if (event && event.target !== modal) {
+                // If the target is not the modal itself (i.e., it's the content inside), do nothing.
+                return;
+            }
+
+            modal.classList.remove('modal-show');
+            // Re-apply initial transition states for next show
+            content.classList.add('scale-90', 'opacity-0');
+        }
+
+        // Expose function globally so it can be called from buttons
+        window.closeDownloadWaitModal = closeDownloadWaitModal;
+
+        // ============================================
+        // MOBILE MENU FUNCTIONALITY
+        // ============================================
+        function openMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            menu.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            menu.classList.remove('open');
+            button.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        window.closeMobileMenu = closeMobileMenu;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menuClose = document.getElementById('mobile-menu-close');
+
+            if (menuButton) {
+                menuButton.addEventListener('click', openMobileMenu);
+            }
+
+            if (menuClose) {
+                menuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking on links
+            const mobileLinks = document.querySelectorAll('#mobile-menu a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        });
+
+        // ============================================
+        // SCROLL TO TOP BUTTON
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollButton = document.getElementById('scroll-to-top');
+
+            function toggleScrollButton() {
+                if (window.pageYOffset > 300) {
+                    scrollButton.classList.add('show');
+                } else {
+                    scrollButton.classList.remove('show');
+                }
+            }
+
+            scrollButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            window.addEventListener('scroll', toggleScrollButton);
+            toggleScrollButton(); // Check on load
+        });
+
+        // ============================================
+        // SCROLL ANIMATIONS
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            fadeElements.forEach(element => {
+                fadeObserver.observe(element);
+            });
+        });
+
+        // ============================================
+        // GOOGLE ADSENSE INITIALIZATION & PROTECTION
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // AdSense ad units are initialized inline after each <ins> tag
+            // This is the recommended approach by Google AdSense
+            // The inline scripts handle: (adsbygoogle = window.adsbygoogle || []).push({});
+            
+            // Additional initialization check to ensure all ads are loaded
+            // Wait a bit for the AdSense script to fully load
+            setTimeout(() => {
+                try {
+                    // Request ad refresh for all ad units (if needed)
+                    const adUnits = document.querySelectorAll('.adsbygoogle');
+                    adUnits.forEach((adUnit) => {
+                        // Check if ad is already initialized
+                        if (adUnit.hasAttribute('data-adsbygoogle-status') && 
+                            adUnit.getAttribute('data-adsbygoogle-status') === 'done') {
+                            // Ad is already loaded, no action needed
+                            return;
+                        }
+                    });
+                } catch (e) {
+                    // Silently handle any errors
+                }
+            }, 1000);
+            
+            // Prevent right-click on ad containers
+            const adContainers = document.querySelectorAll('.ad-container');
+            adContainers.forEach(container => {
+                // Prevent context menu (right-click)
+                container.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                });
+
+                // Prevent common developer tools shortcuts
+                container.addEventListener('keydown', (e) => {
+                    // Prevent F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+                    if (e.key === 'F12' ||
+                        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                        (e.ctrlKey && e.key === 'U')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                });
+
+                // Prevent text selection
+                container.addEventListener('selectstart', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Prevent drag
+                container.addEventListener('dragstart', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+        });
+
+        // Gesture Event Listeners
+        document.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            gesturePoints = [{ x: e.clientX, y: e.clientY }];
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDrawing) {
+                gesturePoints.push({ x: e.clientX, y: e.clientY });
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDrawing) {
+                isDrawing = false;
+                if (detectCircleGesture()) {
+                    showEasterEggModal();
+                }
+                // Clear points regardless of detection outcome
+                gesturePoints = [];
+            }
+        });
+
+
+        // --- Mouse Trail and Click Animation Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const dotContainer = document.getElementById('dot-container');
+
+            // Optimized trail - fewer dots for better performance
+            const numDots = 15; // Optimal number for smooth, attractive trail
+            const easing = 0.15; // Smooth follow speed
+
+            const dots = [];
+            let mouseX = 0, mouseY = 0;
+
+            // 1. Create the dots
+            for (let i = 0; i < numDots; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dotContainer.appendChild(dot);
+                dots.push({
+                    element: dot,
+                    x: 0,
+                    y: 0,
+                });
+            }
+
+            // 2. Track mouse movement
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            // 3. Animation loop using requestAnimationFrame for smooth trail
+            function animate() {
+                // Update the position of each dot
+                dots.forEach((dot, index) => {
+                    let opacity, size;
+
+                    if (index === 0) {
+                        // Primary dot: tracks mouse exactly
+                        dot.x = mouseX;
+                        dot.y = mouseY;
+                        opacity = 1;
+                        size = 12; // Primary dot size (based on 6px CSS)
+                    } else {
+                        // Follower dots: smooth interpolation
+                        const prevDot = dots[index - 1];
+                        dot.x += (prevDot.x - dot.x) * easing;
+                        dot.y += (prevDot.y - dot.y) * easing;
+
+                        // Smooth fade curve
+                        const decay = index / numDots;
+                        opacity = Math.max(0, 1 - decay * 1.1);
+                        size = Math.max(3, 12 - decay * 9);
+                    }
+
+                    // Apply transform (size / 6 because CSS width/height is 6px)
+                    dot.element.style.transform = `translate(-50%, -50%) translate3d(${dot.x}px, ${dot.y}px, 0) scale(${size / 6})`;
+                    dot.element.style.opacity = opacity;
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            // 4. Click Animation Handler (IMPROVED GLOW RIPPLE)
+            document.body.addEventListener('mousedown', (e) => {
+                // *** AUDIO INTEGRATION START ***
+                // Ensure audio context is started on the very first mousedown event
+                if (!isAudioReady) {
+                    initializeAudio();
+                }
+                playPopSound();
+                // *** AUDIO INTEGRATION END ***
+
+                const ring = document.createElement('div');
+                ring.classList.add('click-ring');
+
+                // Position the ring at the click coordinates
+                ring.style.left = `${e.clientX}px`;
+                ring.style.top = `${e.clientY}px`;
+
+                dotContainer.appendChild(ring); // Append to dot container for z-index control
+
+                // Force reflow/repaint before starting transition
+                void ring.offsetWidth;
+
+                // Start the animation
+                ring.classList.add('animate');
+
+                // Remove the element after animation completes (500ms defined in CSS)
+                setTimeout(() => {
+                    ring.remove();
+                }, 500);
+            });
+
+
+            // Start the main animation loop
+            requestAnimationFrame(animate);
+        });
+
+        // ============================================
+        // COUNTDOWN TIMER FOR JANUARY 1ST, 2026
+        // ============================================
+        function updateCountdown() {
+            const targetDate = new Date('2026-01-01T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Initialize countdown on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCountdown(); // Initial call
+            setInterval(updateCountdown, 1000); // Update every second
+        });
+
+        // ============================================
+        // GAMIFICATION SYSTEM
+        // ============================================
+        const GameState = {
+            points: 0,
+            level: 1,
+            clicks: 0,
+            startTime: Date.now(),
+            visitedSections: new Set(),
+            achievements: {
+                'first-click': { unlocked: false, name: 'First Click', icon: '🖱️', points: 10 },
+                'explorer': { unlocked: false, name: 'Explorer', icon: '🗺️', points: 25, requirement: 'Visit 3 sections' },
+                'click-master': { unlocked: false, name: 'Click Master', icon: '👆', points: 50, requirement: '100 clicks' },
+                'time-traveler': { unlocked: false, name: 'Time Traveler', icon: '⏰', points: 30, requirement: '5 minutes on site' },
+                'feature-finder': { unlocked: false, name: 'Feature Finder', icon: '🔍', points: 20, requirement: 'View features section' },
+                'team-viewer': { unlocked: false, name: 'Team Viewer', icon: '👥', points: 20, requirement: 'View team section' },
+                'feedback-giver': { unlocked: false, name: 'Feedback Giver', icon: '💬', points: 25, requirement: 'View feedback section' },
+                'level-up': { unlocked: false, name: 'Level Up!', icon: '⬆️', points: 100, requirement: 'Reach level 2' }
+            }
+        };
+
+        // Load game state from localStorage
+        function loadGameState() {
+            const saved = localStorage.getItem('xz-game-state');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                GameState.points = parsed.points || 0;
+                GameState.level = parsed.level || 1;
+                GameState.clicks = parsed.clicks || 0;
+                GameState.startTime = parsed.startTime || Date.now();
+                GameState.visitedSections = new Set(parsed.visitedSections || []);
+                if (parsed.achievements) {
+                    Object.keys(parsed.achievements).forEach(key => {
+                        if (GameState.achievements[key]) {
+                            GameState.achievements[key].unlocked = parsed.achievements[key].unlocked || false;
+                        }
+                    });
+                }
+            }
+        }
+
+        // Save game state to localStorage
+        function saveGameState() {
+            const toSave = {
+                points: GameState.points,
+                level: GameState.level,
+                clicks: GameState.clicks,
+                startTime: GameState.startTime,
+                visitedSections: Array.from(GameState.visitedSections),
+                achievements: Object.keys(GameState.achievements).reduce((acc, key) => {
+                    acc[key] = { unlocked: GameState.achievements[key].unlocked };
+                    return acc;
+                }, {})
+            };
+            localStorage.setItem('xz-game-state', JSON.stringify(toSave));
+        }
+
+        // Add points and check for level up
+        function addPoints(amount, reason = '') {
+            GameState.points += amount;
+            updateLevel();
+            updateUI();
+            showPointNotification(amount, reason);
+            saveGameState();
+        }
+
+        // Calculate level based on points
+        function updateLevel() {
+            const pointsForNextLevel = GameState.level * 100;
+            if (GameState.points >= pointsForNextLevel) {
+                GameState.level++;
+                checkAchievement('level-up');
+                addPoints(0, ''); // Trigger UI update
+            }
+        }
+
+        // Show point notification
+        function showPointNotification(amount, reason) {
+            const notification = document.getElementById('point-notification');
+            const amountEl = document.getElementById('point-amount');
+            const reasonEl = document.getElementById('point-reason');
+
+            amountEl.textContent = amount;
+            reasonEl.textContent = reason || 'Points earned!';
+
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Check and unlock achievements
+        function checkAchievement(key) {
+            const achievement = GameState.achievements[key];
+            if (!achievement || achievement.unlocked) return;
+
+            achievement.unlocked = true;
+            addPoints(achievement.points, `${achievement.name} unlocked!`);
+            renderAchievements();
+            saveGameState();
+        }
+
+        // Security: Escape HTML entities to prevent XSS
+        function escapeHTML(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Render achievements list (using safe DOM manipulation)
+        function renderAchievements() {
+            const container = document.getElementById('achievements-list');
+            container.innerHTML = '';
+
+            Object.keys(GameState.achievements).forEach(key => {
+                const ach = GameState.achievements[key];
+                const item = document.createElement('div');
+                item.className = `achievement-item ${ach.unlocked ? 'unlocked' : ''}`;
+
+                // Create elements safely instead of using innerHTML
+                const icon = document.createElement('span');
+                icon.className = 'achievement-icon';
+                icon.textContent = ach.icon || '';
+
+                const content = document.createElement('div');
+                content.className = 'flex-1';
+
+                const name = document.createElement('div');
+                name.className = `text-sm font-semibold ${ach.unlocked ? 'text-sky-400' : 'text-gray-500'}`;
+                name.textContent = escapeHTML(ach.name || '');
+
+                content.appendChild(name);
+
+                if (ach.requirement) {
+                    const req = document.createElement('div');
+                    req.className = 'text-xs text-gray-500';
+                    req.textContent = escapeHTML(ach.requirement);
+                    content.appendChild(req);
+                }
+
+                item.appendChild(icon);
+                item.appendChild(content);
+                container.appendChild(item);
+            });
+        }
+
+        // Update UI elements
+        function updateUI() {
+            document.getElementById('total-points').textContent = GameState.points;
+            document.getElementById('stat-clicks').textContent = GameState.clicks;
+            document.getElementById('user-level').textContent = GameState.level;
+
+            // Update collapsed view
+            document.getElementById('collapsed-points').textContent = GameState.points;
+            document.getElementById('collapsed-level').textContent = GameState.level;
+
+            const pointsForNextLevel = GameState.level * 100;
+            const pointsInCurrentLevel = GameState.points % (GameState.level > 1 ? (GameState.level - 1) * 100 : pointsForNextLevel);
+            const progress = (pointsInCurrentLevel / pointsForNextLevel) * 100;
+            document.getElementById('xp-progress').style.width = `${Math.min(progress, 100)}%`;
+            document.getElementById('collapsed-progress').style.width = `${Math.min(progress, 100)}%`;
+            document.getElementById('xp-to-next').textContent = Math.max(0, pointsForNextLevel - pointsInCurrentLevel);
+
+            const timeOnSite = Math.floor((Date.now() - GameState.startTime) / 1000);
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeOnSite / 86400);
+            const hours = Math.floor((timeOnSite % 86400) / 3600);
+            const minutes = Math.floor((timeOnSite % 3600) / 60);
+            const seconds = timeOnSite % 60;
+
+            // Format time display
+            let timeDisplay = '';
+            if (days > 0) {
+                timeDisplay = `${days}d ${hours}h ${minutes}m`;
+            } else if (hours > 0) {
+                timeDisplay = `${hours}h ${minutes}m ${seconds}s`;
+            } else if (minutes > 0) {
+                timeDisplay = `${minutes}m ${seconds}s`;
+            } else {
+                timeDisplay = `${seconds}s`;
+            }
+
+            document.getElementById('stat-time').textContent = timeDisplay;
+            document.getElementById('stat-sections').textContent = GameState.visitedSections.size;
+        }
+
+        // Track section visits
+        function trackSectionVisit(sectionId) {
+            if (!GameState.visitedSections.has(sectionId)) {
+                GameState.visitedSections.add(sectionId);
+                addPoints(5, 'Section discovered!');
+
+                if (GameState.visitedSections.size >= 3) {
+                    checkAchievement('explorer');
+                }
+
+                // Check specific section achievements
+                if (sectionId === 'features') checkAchievement('feature-finder');
+                if (sectionId === 'team') checkAchievement('team-viewer');
+                if (sectionId === 'feedback') checkAchievement('feedback-giver');
+            }
+        }
+
+        // Intersection Observer for section tracking
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    if (sectionId) {
+                        trackSectionVisit(sectionId);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Initialize gamification
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGameState();
+            renderAchievements();
+            updateUI();
+
+            // Track clicks
+            document.addEventListener('click', (e) => {
+                GameState.clicks++;
+                if (GameState.clicks === 1) {
+                    checkAchievement('first-click');
+                }
+                if (GameState.clicks >= 100) {
+                    checkAchievement('click-master');
+                }
+                addPoints(1, '');
+                saveGameState();
+            });
+
+            // Track time on site
+            setInterval(() => {
+                const timeOnSite = Math.floor((Date.now() - GameState.startTime) / 1000);
+                if (timeOnSite >= 300) { // 5 minutes
+                    checkAchievement('time-traveler');
+                }
+                updateUI();
+            }, 1000);
+
+            // Observe sections
+            ['features', 'team', 'feedback', 'home', 'countdown-section'].forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    sectionObserver.observe(section);
+                }
+            });
+
+            // Toggle gamification panel
+            const panel = document.getElementById('gamification-panel');
+            const toggleBtn = document.getElementById('toggle-gamification');
+            const closeBtn = document.getElementById('toggle-gamification-close');
+            const collapsedTab = document.getElementById('collapsed-tab');
+
+            function expandPanel() {
+                panel.classList.add('expanded');
+                toggleBtn.textContent = '▶';
+            }
+
+            function collapsePanel() {
+                panel.classList.remove('expanded');
+                toggleBtn.textContent = '◀';
+            }
+
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (panel.classList.contains('expanded')) {
+                    collapsePanel();
+                } else {
+                    expandPanel();
+                }
+            });
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', collapsePanel);
+            }
+
+            // Click on collapsed tab to expand
+            collapsedTab.addEventListener('click', (e) => {
+                if (!panel.classList.contains('expanded') && e.target !== toggleBtn) {
+                    expandPanel();
+                }
+            });
+
+            // Download button click handlers
+            const downloadWindowsBtn = document.getElementById('download-windows');
+            const downloadMacosBtn = document.getElementById('download-macos');
+
+            if (downloadWindowsBtn) {
+                downloadWindowsBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showDownloadWaitModal();
+                });
+            }
+
+            if (downloadMacosBtn) {
+                downloadMacosBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showDownloadWaitModal();
+                });
+            }
+        });
+
+        // ============================================
+        // MINI GAME: CODE TYPING CHALLENGE
+        // ============================================
+        const codeSnippets = [
+            { code: 'function hello() {\n  console.log("Hello!");\n}', difficulty: 1 },
+            { code: 'const x = 10;\nconst y = 20;\nconst sum = x + y;', difficulty: 1 },
+            { code: 'if (condition) {\n  return true;\n} else {\n  return false;\n}', difficulty: 2 },
+            { code: 'for (let i = 0; i < 10; i++) {\n  console.log(i);\n}', difficulty: 2 },
+            { code: 'const arr = [1, 2, 3];\narr.map(x => x * 2);', difficulty: 2 },
+            { code: 'class User {\n  constructor(name) {\n    this.name = name;\n  }\n}', difficulty: 3 },
+            { code: 'async function fetchData() {\n  const response = await fetch(url);\n  return response.json();\n}', difficulty: 3 },
+            { code: 'const obj = { a: 1, b: 2 };\nconst { a, b } = obj;', difficulty: 3 },
+            { code: 'const add = (a, b) => a + b;\nconst result = add(5, 3);', difficulty: 2 },
+            { code: 'try {\n  riskyCode();\n} catch (error) {\n  console.error(error);\n}', difficulty: 3 }
+        ];
+
+        let gameState = {
+            isPlaying: false,
+            isPaused: false,
+            score: 0,
+            level: 1,
+            timeLeft: 60,
+            currentCode: null,
+            timer: null,
+            codesCompleted: 0
+        };
+
+        function getRandomCode() {
+            const filtered = codeSnippets.filter(s => s.difficulty <= gameState.level);
+            return filtered[Math.floor(Math.random() * filtered.length)];
+        }
+
+        function showGameModal() {
+            const modal = document.getElementById('game-modal');
+            const content = document.getElementById('game-modal-content');
+
+            if (!modal || !content) {
+                console.error('Game modal elements not found', { modal, content });
+                return;
+            }
+
+            // Reset game screens
+            const startScreen = document.getElementById('game-start-screen');
+            const playArea = document.getElementById('game-play-area');
+            const endScreen = document.getElementById('game-end-screen');
+
+            if (startScreen) startScreen.classList.remove('hidden');
+            if (playArea) playArea.classList.add('hidden');
+            if (endScreen) endScreen.classList.add('hidden');
+
+            // Reset game state
+            gameState.isPlaying = false;
+            gameState.isPaused = false;
+            gameState.score = 0;
+            gameState.level = 1;
+            gameState.timeLeft = 60;
+            gameState.codesCompleted = 0;
+
+            // Update UI
+            updateGameUI();
+
+            // Show modal with a small delay to ensure DOM is ready
+            setTimeout(() => {
+                modal.classList.add('show');
+                content.classList.remove('scale-90', 'opacity-0');
+            }, 10);
+
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideGameModal() {
+            const modal = document.getElementById('game-modal');
+            const content = document.getElementById('game-modal-content');
+            if (modal) modal.classList.remove('show');
+            if (content) content.classList.add('scale-90', 'opacity-0');
+            stopGame();
+            document.body.style.overflow = '';
+        }
+
+        // Make function globally accessible
+        window.showGameModal = showGameModal;
+        window.hideGameModal = hideGameModal;
+
+        function startGame() {
+            gameState.isPlaying = true;
+            gameState.isPaused = false;
+            gameState.score = 0;
+            gameState.level = 1;
+            gameState.timeLeft = 60;
+            gameState.codesCompleted = 0;
+
+            document.getElementById('game-start-screen').classList.add('hidden');
+            document.getElementById('game-play-area').classList.remove('hidden');
+            document.getElementById('game-end-screen').classList.add('hidden');
+
+            updateGameUI();
+            loadNewCode();
+            startTimer();
+        }
+
+        function stopGame() {
+            gameState.isPlaying = false;
+            gameState.isPaused = false;
+            if (gameState.timer) {
+                clearInterval(gameState.timer);
+                gameState.timer = null;
+            }
+        }
+
+        function pauseGame() {
+            if (!gameState.isPlaying) return;
+            gameState.isPaused = !gameState.isPaused;
+            const btn = document.getElementById('pause-game-btn');
+            btn.textContent = gameState.isPaused ? '▶ Resume' : '⏸ Pause';
+
+            if (gameState.isPaused) {
+                clearInterval(gameState.timer);
+            } else {
+                startTimer();
+            }
+        }
+
+        function startTimer() {
+            if (gameState.timer) clearInterval(gameState.timer);
+            gameState.timer = setInterval(() => {
+                if (!gameState.isPaused && gameState.isPlaying) {
+                    gameState.timeLeft--;
+                    updateGameUI();
+
+                    if (gameState.timeLeft <= 0) {
+                        endGame();
+                    }
+                }
+            }, 1000);
+        }
+
+        function loadNewCode() {
+            gameState.currentCode = getRandomCode();
+            document.getElementById('code-to-type').textContent = gameState.currentCode.code;
+            document.getElementById('code-input').value = '';
+            document.getElementById('code-input').className = 'w-full bg-gray-950 border border-gray-700 rounded-lg p-4 font-mono text-sm text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 resize-none';
+            document.getElementById('game-progress').style.width = '0%';
+            document.getElementById('game-feedback').textContent = '';
+            document.getElementById('code-input').focus();
+        }
+
+        function checkCode() {
+            if (!gameState.isPlaying || gameState.isPaused) return;
+
+            // Security: Sanitize and limit input length to prevent DoS
+            const rawInput = document.getElementById('code-input').value;
+            const input = rawInput.trim().substring(0, 10000); // Limit to 10KB
+            const target = gameState.currentCode.code.trim();
+            const progress = (input.length / target.length) * 100;
+            document.getElementById('game-progress').style.width = Math.min(progress, 100) + '%';
+
+            if (input === target) {
+                // Correct!
+                const timeBonus = Math.max(1, Math.floor(gameState.timeLeft / 10));
+                const difficultyBonus = gameState.currentCode.difficulty * 10;
+                const points = 20 + timeBonus + difficultyBonus;
+
+                gameState.score += points;
+                gameState.codesCompleted++;
+
+                // Level up every 3 codes
+                if (gameState.codesCompleted % 3 === 0) {
+                    gameState.level++;
+                    gameState.timeLeft += 10; // Bonus time
+                }
+
+                // Add XP to main game
+                if (typeof addPoints === 'function') {
+                    addPoints(Math.floor(points / 2), 'Code challenge completed!');
+                }
+
+                document.getElementById('code-input').className = 'w-full bg-gray-950 border border-green-500 rounded-lg p-4 font-mono text-sm text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 resize-none';
+                document.getElementById('game-feedback').textContent = `+${points} points!`;
+                document.getElementById('game-feedback').className = 'text-sm font-semibold text-green-400';
+
+                setTimeout(() => {
+                    loadNewCode();
+                }, 800);
+            } else if (target.startsWith(input)) {
+                // Still typing correctly
+                document.getElementById('code-input').className = 'w-full bg-gray-950 border border-sky-500 rounded-lg p-4 font-mono text-sm text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 resize-none';
+                document.getElementById('game-feedback').textContent = '';
+            } else {
+                // Incorrect
+                document.getElementById('code-input').className = 'w-full bg-gray-950 border border-red-500 rounded-lg p-4 font-mono text-sm text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 resize-none';
+                document.getElementById('game-feedback').textContent = 'Incorrect - keep trying!';
+                document.getElementById('game-feedback').className = 'text-sm font-semibold text-red-400';
+            }
+
+            updateGameUI();
+        }
+
+        function skipCode() {
+            if (!gameState.isPlaying || gameState.isPaused) return;
+            loadNewCode();
+        }
+
+        function endGame() {
+            stopGame();
+            const earnedXP = Math.floor(gameState.score / 3);
+
+            if (typeof addPoints === 'function' && earnedXP > 0) {
+                addPoints(earnedXP, 'Game completed!');
+            }
+
+            document.getElementById('game-play-area').classList.add('hidden');
+            document.getElementById('game-end-screen').classList.remove('hidden');
+            document.getElementById('final-score').textContent = gameState.score;
+            document.getElementById('earned-xp').textContent = earnedXP;
+            updateGameUI();
+        }
+
+        function updateGameUI() {
+            document.getElementById('game-score').textContent = gameState.score;
+            document.getElementById('game-timer').textContent = gameState.timeLeft;
+            document.getElementById('game-level').textContent = gameState.level;
+        }
+
+        // Game Event Listeners - Attach after game functions are defined
+        function attachGameListeners() {
+            const openBtn = document.getElementById('open-game-btn');
+            const openBtnHeader = document.getElementById('open-game-btn-header');
+            const openBtnMobile = document.getElementById('open-game-btn-mobile');
+            const closeBtn = document.getElementById('close-game-btn');
+            const startBtn = document.getElementById('start-game-btn');
+            const pauseBtn = document.getElementById('pause-game-btn');
+            const skipBtn = document.getElementById('skip-code-btn');
+            const playAgainBtn = document.getElementById('play-again-btn');
+            const closeEndBtn = document.getElementById('close-game-end-btn');
+            const codeInput = document.getElementById('code-input');
+
+            function openGame(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                showGameModal();
+            }
+
+            if (openBtn) {
+                openBtn.addEventListener('click', openGame);
+            }
+
+            if (openBtnHeader) {
+                openBtnHeader.addEventListener('click', openGame);
+            }
+
+            if (openBtnMobile) {
+                openBtnMobile.addEventListener('click', openGame);
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', hideGameModal);
+            }
+
+            if (closeEndBtn) {
+                closeEndBtn.addEventListener('click', hideGameModal);
+            }
+
+            if (startBtn) {
+                startBtn.addEventListener('click', () => {
+                    startGame();
+                });
+            }
+
+            if (playAgainBtn) {
+                playAgainBtn.addEventListener('click', () => {
+                    document.getElementById('game-end-screen').classList.add('hidden');
+                    startGame();
+                });
+            }
+
+            if (pauseBtn) {
+                pauseBtn.addEventListener('click', pauseGame);
+            }
+
+            if (skipBtn) {
+                skipBtn.addEventListener('click', skipCode);
+            }
+
+            if (codeInput) {
+                codeInput.addEventListener('input', checkCode);
+                codeInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && e.ctrlKey) {
+                        e.preventDefault();
+                        checkCode();
+                    }
+                });
+            }
+
+            // Close modal on backdrop click
+            const modal = document.getElementById('game-modal');
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        hideGameModal();
+                    }
+                });
+            }
+        }
+
+        // Attach game listeners when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            attachGameListeners();
+        });
+    </script>
+</body>
+
+</html>

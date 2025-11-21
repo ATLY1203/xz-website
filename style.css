@@ -1,0 +1,428 @@
+/* --- FIX: Set HTML background to prevent white bar on scroll bounce --- */
+html {
+    /* CHANGED: Inky Dark Blue (Purple + Dark Blue Blend) */
+    background-color: #0D111A;
+    scroll-behavior: smooth;
+}
+
+/* Custom styles for professional, tech-forward look */
+body {
+    font-family: 'Inter', sans-serif;
+    /* CHANGED: Inky Dark Blue (Purple + Dark Blue Blend) */
+    background-color: #0D111A; 
+    color: #f0f6fc; /* Light text */
+    /* Hide default cursor and use custom cursor for the main body */
+    cursor: none; 
+    overflow-x: hidden; /* Prevent horizontal scroll due to potential overshoots */
+}
+
+/* --- Text Selection Disabled --- */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Gradient uses the purple glow against the dark blue background */
+.hero-gradient {
+    /* Subtle radial gradient for depth - using purple glow on dark blue */
+    background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.1), transparent 60%); 
+}
+
+/* Custom ring/shadow for interactive cards */
+.card-glow:hover {
+    /* Purple/blue glow retained */
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.5); 
+    transform: translateY(-4px) scale(1.02);
+}
+
+/* --- Mouse Trail Effect Styles (Optimized & Attractive) --- */
+#dot-container {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+.dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #38bdf8;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    will-change: transform, opacity;
+    /* Clean, performant glow */
+    box-shadow: 0 0 12px 2px rgba(56, 189, 248, 0.9);
+    transition: opacity 0.1s ease-out;
+}
+
+/* Scroll to top button */
+#scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 5rem; /* Adjusted to avoid gamification panel */
+    width: 50px;
+    height: 50px;
+    background: rgba(56, 189, 248, 0.9);
+    border: 2px solid rgba(56, 189, 248, 0.5);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+}
+
+#scroll-to-top:hover {
+    background: rgba(56, 189, 248, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+}
+
+#scroll-to-top.show {
+    display: flex;
+}
+
+/* Mobile menu styles */
+#mobile-menu {
+    display: none;
+}
+
+#mobile-menu-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #mobile-menu-button {
+        display: block;
+    }
+    
+    #mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(13, 17, 26, 0.98);
+        backdrop-filter: blur(20px);
+        z-index: 100;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #mobile-menu.open {
+        transform: translateX(0);
+    }
+    
+    #mobile-menu a {
+        padding: 1rem;
+        font-size: 1.25rem;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    }
+}
+
+/* Scroll animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #38bdf8;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* --- Click Animation Style (Volumetric Glow Ripple) --- */
+.click-ring {
+    position: fixed;
+    border-radius: 50%;
+    width: 30px; /* Starting size */
+    height: 30px;
+    /* REVERTED: Click ring shadow color back to vibrant Sky Blue */
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.9); 
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    pointer-events: none;
+    /* Fast, cubic transition for the ripple effect */
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out; 
+    z-index: 10000;
+}
+.click-ring.animate {
+    transform: translate(-50%, -50%) scale(8); /* Expands greatly */
+    opacity: 0;
+    /* The shadow expands and fades out along with the element */
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.0); 
+}
+
+/* Custom cursor style for interactive elements (links/buttons) */
+a, button, .card-glow, td, table { /* Added 'table' for better hover control */
+    cursor: pointer !important;
+}
+
+/* Modal Animation for Easter Egg */
+.modal-show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.modal-show > #modal-content {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+}
+
+/* NEW: Hover effect for Team Table Rows */
+.team-row-hover:hover {
+    /* CHANGED: Dark Blue-Violet mix for subtle contrast */
+    background-color: #1A162B; 
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+    transform: scale(1.005);
+}
+
+/* Style for Select element arrow color */
+.feedback-select {
+    /* Using a simple SVG background to control the dropdown arrow color in dark mode */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 9l3 3 3-3m0 0H7' stroke='%23d1d5db' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5em 1.5em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 2.5rem; /* Make room for the custom arrow */
+}
+
+/* Countdown Timer Styles */
+.countdown-item {
+    transition: all 0.3s ease;
+}
+.countdown-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
+
+/* Gamification Panel Styles - Tab Design */
+#gamification-panel {
+    border-radius: 1rem 0 0 1rem;
+}
+#gamification-panel.expanded {
+    transform: translateX(0);
+}
+#gamification-panel:not(.expanded) {
+    transform: translateX(calc(100% - 60px));
+}
+
+#collapsed-tab {
+    width: 60px;
+    min-height: 180px;
+}
+
+#expanded-panel {
+    display: none;
+}
+#gamification-panel.expanded #expanded-panel {
+    display: block;
+}
+#gamification-panel.expanded #collapsed-tab {
+    border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+@media (max-width: 768px) {
+    #gamification-panel {
+        top: 5rem;
+        border-radius: 1rem 0 0 1rem;
+    }
+    #gamification-panel:not(.expanded) {
+        transform: translateX(calc(100% - 60px)) !important;
+    }
+    #collapsed-tab {
+        width: 60px;
+        min-height: 150px;
+    }
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(56, 189, 248, 0.1);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    transition: all 0.3s ease;
+}
+.achievement-item.unlocked {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: rgba(56, 189, 248, 0.5);
+}
+.achievement-item.unlocked .achievement-icon {
+    filter: brightness(1.2);
+}
+
+.achievement-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+.achievement-item.unlocked .achievement-icon {
+    opacity: 1;
+}
+
+        /* Point Notification Animation */
+        #point-notification {
+            border-radius: 0.5rem 0 0 0.5rem; /* Rounded on left side only when at edge */
+        }
+        #point-notification.show {
+            transform: translateX(0);
+        }
+        @media (max-width: 768px) {
+            #point-notification {
+                right: 0.5rem !important;
+                top: 1rem;
+                border-radius: 0.5rem; /* Full rounded on mobile */
+            }
+        }
+
+        /* Google AdSense Container Styles */
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: rgba(17, 24, 39, 0.5);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: auto;
+        }
+        
+        /* Prevent right-click and text selection on ad containers */
+        .ad-container * {
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+        }
+
+        .ad-container.ad-banner {
+            max-width: 728px;
+            min-height: 90px;
+        }
+
+        .ad-container.ad-responsive {
+            max-width: 100%;
+            min-height: 250px;
+        }
+
+        /* Style AdSense iframes to match dark theme */
+        .ad-container ins {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Mobile responsive ad styling */
+        @media (max-width: 768px) {
+            .ad-container {
+                max-width: 100%;
+                padding: 0.75rem;
+                min-height: 100px;
+            }
+            
+            .ad-container.ad-responsive {
+                min-height: 200px;
+            }
+        }
+
+        /* Mini Game Modal Styles */
+        #game-modal {
+            cursor: default !important;
+        }
+        #game-modal.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        #game-modal.show #game-modal-content {
+            transform: scale(1) !important;
+            opacity: 1 !important;
+        }
+        #game-modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+            cursor: default !important;
+        }
+        #game-modal * {
+            cursor: default !important;
+        }
+        #game-modal input,
+        #game-modal textarea,
+        #game-modal button {
+            cursor: pointer !important;
+        }
+        #game-modal textarea {
+            cursor: text !important;
+        }
+        #code-input:focus {
+            outline: none;
+        }
+        #code-input.correct {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+        #code-input.incorrect {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+        
+        /* Ensure game start screen is visible */
+        #game-start-screen {
+            display: block !important;
+        }
+        #game-start-screen.hidden {
+            display: none !important;
+        }
+        #start-game-btn {
+            display: inline-block !important;
+            cursor: pointer;
+        }
